@@ -71,7 +71,13 @@
       "apps/web/components/Slider.tsx",
       "apps/web/lib/theme.ts",
       "apps/web/components/MessageForm.tsx",
-      "apps/web/lib/contact.ts"
+      "apps/web/lib/contact.ts",
+      "package.json",
+      ".gitignore",
+      "apps/web/package.json",
+      "apps/web/tsconfig.json",
+      "apps/web/.gitignore",
+      "apps/web/next.config.ts"
     ],
     "dashboard": [
       "apps/backend/ohne.config.ts",
@@ -83,7 +89,10 @@
       "apps/backend/blocks/Posts.ts",
       "apps/backend/collections/Messages.ts",
       "apps/backend/middleware/recaptcha.ts",
-      "apps/backend/boot/seed.ts"
+      "apps/backend/boot/seed.ts",
+      "apps/backend/package.json",
+      "apps/backend/tsconfig.json",
+      "apps/backend/.gitignore"
     ]
   },
   "smoke": ["/cms/records/Settings", "/cms/routes/resolve?path=/"],
