@@ -1,0 +1,41 @@
+/* Every color, font and size the other stylesheets use. */
+/* Breakpoints, widest first: 1199px (small laptop), 1023px (tablet), 767px (phone). */
+:root {
+  color-scheme: light;
+  --heading: #010203;
+  --copy: #234345;
+  --accent: #268baa;
+  --border: #e2e4e8;
+  --dim: #59797b;
+  --page: #fff;
+  --ink: #010203;
+  --overlay: rgb(1 2 3 / 0.7);
+  --backdrop: rgb(1 2 3 / 0.8);
+  --menu-backdrop: rgb(255 255 255 / 0.75);
+  --badge: #234345;
+  --badge-icon: #fff;
+
+  --font-copy: Lato, ui-sans-serif, system-ui, sans-serif;
+  --font-heading: Poppins, ui-sans-serif, system-ui, sans-serif;
+
+  --container: 73.75rem;
+  --content: 48.75rem;
+  --gutter: 3rem;
+  --section: 5.75rem;
+  --radius: 0.375rem;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --fast: 150ms;
+  --slow: 300ms;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 1.5rem;
+  }
+}

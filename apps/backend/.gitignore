@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Generated
+.ohne/
+
+# Data
+.data/
+
+# Environment / secrets
+.env
+
+# OS
+.DS_Store

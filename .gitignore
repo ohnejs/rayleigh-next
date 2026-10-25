@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Uploaded files
+.uploads/
+
+# OS
+.DS_Store
+
+# Local link to the ohne checkout
+.pnpmfile.cjs
+
+# Claude
+.claude/
