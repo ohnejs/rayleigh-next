@@ -2,7 +2,7 @@ import { openAsBlob } from 'node:fs';
 import { hook, query, useEnv } from 'ohnejs';
 import { putUpload, updateUpload } from 'ohnejs/uploads';
 
-import { galleries } from '../seed/content.ts';
+import { about, galleries } from '../seed/content.ts';
 
 /**
  * Uploads one image from `seed/images/` to the media library, as an editor would, and gives it its alt text.
@@ -41,25 +41,49 @@ hook('schema:synced', async () => {
     status: 'published',
     content: [
       {
-        block: 'Hero',
+        block: 'PageIntro',
         fields: {
-          heading: 'Welcome to Rayleigh',
-          lead: [
-            {
-              kind: 'paragraph',
-              content: [{ text: 'A minimalistic portfolio template made with ohne.' }],
-            },
-          ],
+          title: 'Welcome to Rayleigh',
+          kicker: 'A minimalistic portfolio template made with ohne.',
         },
       },
       ...portfolio,
     ],
   });
 
+  const aboutPage = await query('Pages').createOrThrow({
+    title: 'About',
+    slug: 'about',
+    status: 'published',
+    footerBorder: true,
+    content: [
+      {
+        block: 'PageIntro',
+        fields: {
+          title: 'About',
+          kicker: 'Unveiling the artistry of interior and exterior design.',
+        },
+      },
+      {
+        block: 'Image',
+        fields: {
+          image: await upload(
+            'other/about.webp',
+            'A designer with folded arms in a bright open room beside a pool',
+          ),
+        },
+      },
+      { block: 'Prose', fields: { body: about } },
+    ],
+  });
+
   // A singleton always has its one record, so the seed updates it instead of creating it.
   await query('Settings').update({
     logo,
-    menu: [{ label: 'Portfolio', link: { collection: 'Pages', record: home.UUID } }],
+    menu: [
+      { label: 'Portfolio', link: { collection: 'Pages', record: home.UUID } },
+      { label: 'About', link: { collection: 'Pages', record: aboutPage.UUID } },
+    ],
     copyright: '© 2026 Rayleigh. Built with ohne.',
     social: [
       {

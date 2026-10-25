@@ -166,6 +166,17 @@
   margin-top: var(--section);
 }
 
+/* Nuxt marks a block's own root element, Next wraps it in a `div`, so this matches both. */
+.main > :is(.content-block, :has(> .content-block)) + :is(.content-block, :has(> .content-block)) {
+  margin-top: 2rem;
+}
+
+.main--bordered {
+  padding-bottom: var(--section);
+  border-bottom: 1px solid var(--border);
+  transition: border-color var(--slow) var(--ease);
+}
+
 /* Footer */
 
 .footer {

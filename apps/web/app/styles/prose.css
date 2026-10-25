@@ -1,0 +1,70 @@
+/* Rich text from the CMS, as `OhneRichText` renders it into a `.prose` element. */
+.prose > * {
+  margin-bottom: 1.5em;
+}
+
+.prose > :is(h2, h3) {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.prose > h2 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.prose > h3 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.prose > p {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+
+.prose > ul > li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.prose > ul > li::before {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
+.prose a:not([class]) {
+  color: var(--heading);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--fast) var(--ease);
+}
+
+.prose a:not([class]):is(:hover, :focus-visible) {
+  color: var(--accent);
+}
+
+@media (max-width: 767px) {
+  .prose > h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .prose > h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}

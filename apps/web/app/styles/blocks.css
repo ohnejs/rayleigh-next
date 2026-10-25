@@ -1,3 +1,15 @@
+/* Page intro */
+
+.page-intro {
+  max-width: var(--content);
+}
+
+.page-intro__kicker {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
 /* Portfolio */
 
 .portfolio__title {
@@ -94,4 +106,15 @@
   .portfolio__overlay {
     padding: 1.5rem;
   }
+}
+
+/* Image and Prose share a narrower measure, and sit closer together. */
+
+.content-block > * {
+  max-width: var(--content);
+}
+
+.image-block {
+  width: 100%;
+  border-radius: var(--radius);
 }

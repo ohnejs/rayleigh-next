@@ -1,6 +1,7 @@
 import { OhneBlocks } from '@ohnejs/next';
 
-import { Hero } from '../../components/blocks/Hero';
+import { Image } from '../../components/blocks/Image';
+import { PageIntro } from '../../components/blocks/PageIntro';
 import { Portfolio } from '../../components/blocks/Portfolio';
 import { Prose } from '../../components/blocks/Prose';
 import { ohne } from '../../lib/ohne';
@@ -14,9 +15,12 @@ export default async function Page() {
   const { page } = await ohne.page();
   // Each block renders its own heading, so a page adds no `<h1>` of its own.
   return (
-    <main className="main" lang={page.locale}>
+    <main className={page.record.footerBorder ? 'main main--bordered' : 'main'} lang={page.locale}>
       {/* Name a component for every block. A block the CMS adds fails `pnpm typecheck` until it has one. */}
-      <OhneBlocks blocks={page.record.content} components={{ Hero, Prose, Portfolio }} />
+      <OhneBlocks
+        blocks={page.record.content}
+        components={{ PageIntro, Portfolio, Image, Prose }}
+      />
     </main>
   );
 }

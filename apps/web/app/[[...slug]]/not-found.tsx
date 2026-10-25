@@ -1,7 +1,8 @@
 import { OhneBlocks } from '@ohnejs/next';
 import Link from 'next/link';
 
-import { Hero } from '../../components/blocks/Hero';
+import { Image } from '../../components/blocks/Image';
+import { PageIntro } from '../../components/blocks/PageIntro';
 import { Portfolio } from '../../components/blocks/Portfolio';
 import { Prose } from '../../components/blocks/Prose';
 import { Container } from '../../components/Container';
@@ -14,8 +15,8 @@ export default async function NotFound() {
   const page = resolved.kind === 'notFound' ? resolved.page : undefined;
   if (page)
     return (
-      <main className="main">
-        <OhneBlocks blocks={page.content} components={{ Hero, Prose, Portfolio }} />
+      <main className={page.footerBorder ? 'main main--bordered' : 'main'}>
+        <OhneBlocks blocks={page.content} components={{ PageIntro, Portfolio, Image, Prose }} />
       </main>
     );
   return (
