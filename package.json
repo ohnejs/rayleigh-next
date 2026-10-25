@@ -2,7 +2,7 @@
   "name": "rayleigh-next",
   "version": "0.1.0",
   "private": true,
-  "description": "A minimalistic portfolio with a gallery, an About page and a blog, built with ohne and Next. An ohne example.",
+  "description": "A minimalistic portfolio with a gallery, an About page, a blog and a contact form, built with ohne and Next. An ohne example.",
   "homepage": "https://ohne.dev/examples/rayleigh",
   "license": "MIT",
   "author": "Muris Ceman <muris@ohne.dev>",

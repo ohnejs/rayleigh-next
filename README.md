@@ -1,6 +1,6 @@
 # Rayleigh
 
-A minimalistic portfolio with a gallery, an About page and a blog, edited in a CMS. The CMS is an
+A minimalistic portfolio with a gallery, an About page, a blog and a contact form, edited in a CMS. The CMS is an
 [ohne](https://ohne.dev) app, the website is [Next](https://nextjs.org). Free under the MIT licence.
 
 <picture>
@@ -24,7 +24,7 @@ Its `apps/backend` is identical to this one.
 ## What it shows
 
 - **Pages built from blocks.** `apps/backend/blocks/` holds `PageIntro`, `Portfolio`, `Image`,
-  `Prose` and `Posts`, and `apps/web/components/blocks/` one component for each. See
+  `Prose`, `Posts` and `ContactForm`, and `apps/web/components/blocks/` one component for each. See
   [blocks](https://ohne.dev/docs/database/blocks).
 - **A blog with its own route.** `cms.routes` in `apps/backend/ohne.config.ts` shows a post at
   `/blog/<slug>` and every other path as a page. One catch-all page,
@@ -40,6 +40,15 @@ Its `apps/backend` is identical to this one.
 - **A paginated list.** The `Posts` block lists three posts to a page with `ohne.list`, takes the
   page from `ohne.searchParams`, and answers `404` past the last page. See
   [Next](https://ohne.dev/docs/cms/frameworks#next).
+- **A contact form.** `Messages` lets any visitor create a message and nobody but an editor read
+  one. The form sends it through a Server Action, `apps/web/lib/contact.ts`, with `ohne.create`,
+  and shows the CMS's own message under each invalid field. See
+  [forms](https://ohne.dev/docs/cms/website#forms).
+- **An optional spam check.** Turn on reCAPTCHA v3 in `Settings`, and
+  `apps/backend/middleware/recaptcha.ts` asks Google about each message before it is stored. The
+  secret key is `readable: false`, so no read returns it. See
+  [middleware](https://ohne.dev/docs/api/middleware#route-middleware) and
+  [write-only fields](https://ohne.dev/docs/database/collections#write-only-and-locked-fields).
 - **Rich text.** The `Prose` block's editor offers only what the design has styles for. See
   [rich text](https://ohne.dev/docs/database/rich-text).
 - **Uploads in a seed.** `apps/backend/boot/seed.ts` uploads every image with `putUpload`, as an
@@ -57,7 +66,7 @@ Its `apps/backend` is identical to this one.
 - **One monorepo.** `apps/backend` and `apps/web` share one pnpm workspace. See
   [monorepo](https://ohne.dev/docs/project/monorepo).
 - **Tests.** `apps/backend/tests/` boots the API in the test process and checks what the seed
-  serves.
+  serves, who may send and read a message, and that the secret key stays secret.
 
 ## Getting started
 

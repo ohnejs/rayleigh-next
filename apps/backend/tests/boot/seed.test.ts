@@ -18,6 +18,7 @@ describe('seed', () => {
       '/': 'Homepage | Rayleigh',
       '/blog': 'Blog | Rayleigh',
       '/about': 'About | Rayleigh',
+      '/contact': 'Contact | Rayleigh',
       '/blog/harmony-in-space': 'Harmony in Space: The Essence of Minimalist Design | Rayleigh',
       '/blog/digital-roots': 'Digital Roots: Blending Technology with Nature | Rayleigh',
       '/blog/linear-elegance': 'Linear Elegance: The Beauty of Architectural Minimalism | Rayleigh',
@@ -42,6 +43,12 @@ describe('seed', () => {
       'Portfolio Interior design 6',
       'Portfolio Exterior design 6',
     ]);
+  });
+
+  it('ends the contact page with the contact form', async () => {
+    const { body } = await app.get('/cms/routes/resolve?path=/contact');
+    const blocks = body.record.content.map(({ block }: { block: string }) => block);
+    deepStrictEqual(blocks, ['PageIntro', 'ContactForm']);
   });
 
   it('answers a path nothing has with `notFound`', async () => {
@@ -78,6 +85,7 @@ describe('seed', () => {
         ['Portfolio', '/'],
         ['Blog', '/blog'],
         ['About', '/about'],
+        ['Contact', '/contact'],
       ],
     );
     strictEqual(body.copyright, '© 2026 Rayleigh. Built with ohne.');

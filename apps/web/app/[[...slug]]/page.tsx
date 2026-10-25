@@ -1,6 +1,7 @@
 import { OhneBlocks } from '@ohnejs/next';
 
 import { BackButton } from '../../components/BackButton';
+import { ContactForm } from '../../components/blocks/ContactForm';
 import { Image } from '../../components/blocks/Image';
 import { PageIntro } from '../../components/blocks/PageIntro';
 import { Portfolio } from '../../components/blocks/Portfolio';
@@ -42,7 +43,7 @@ export default async function Page() {
       {/* Name a component for every block. A block the CMS adds fails `pnpm typecheck` until it has one. */}
       <OhneBlocks
         blocks={page.record.content}
-        components={{ PageIntro, Portfolio, Image, Prose, Posts }}
+        components={{ PageIntro, Portfolio, Image, Prose, Posts, ContactForm }}
       />
     </main>
   );

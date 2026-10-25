@@ -1,8 +1,8 @@
 {
   "slug": "rayleigh",
   "name": "Rayleigh",
-  "summary": "A minimalistic portfolio with a gallery, an About page and a blog, edited in a CMS.",
-  "description": "A portfolio website on ohne and Next: pages built from blocks, a full-screen gallery, a paginated blog, dark mode, and a live preview beside the editor.",
+  "summary": "A minimalistic portfolio with a gallery, an About page, a blog and a contact form, edited in a CMS.",
+  "description": "A portfolio website on ohne and Next: pages built from blocks, a full-screen gallery, a paginated blog, a contact form, dark mode, and a live preview beside the editor.",
   "kind": "website",
   "source": "https://github.com/ohnejs/rayleigh-next",
   "variants": [
@@ -36,7 +36,9 @@
     "dashboard/field-layouts",
     "uploads/uploads",
     "project/boot",
-    "project/monorepo"
+    "project/monorepo",
+    "api/collections",
+    "api/middleware"
   ],
   "languages": ["en"],
   "screenshots": {
@@ -67,7 +69,9 @@
       "apps/web/components/blocks/Portfolio.tsx",
       "apps/web/components/blocks/Posts.tsx",
       "apps/web/components/Slider.tsx",
-      "apps/web/lib/theme.ts"
+      "apps/web/lib/theme.ts",
+      "apps/web/components/MessageForm.tsx",
+      "apps/web/lib/contact.ts"
     ],
     "dashboard": [
       "apps/backend/ohne.config.ts",
@@ -77,6 +81,8 @@
       "apps/backend/collections/Settings.ts",
       "apps/backend/blocks/Portfolio.ts",
       "apps/backend/blocks/Posts.ts",
+      "apps/backend/collections/Messages.ts",
+      "apps/backend/middleware/recaptcha.ts",
       "apps/backend/boot/seed.ts"
     ]
   },

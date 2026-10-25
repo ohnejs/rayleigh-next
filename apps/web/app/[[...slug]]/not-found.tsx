@@ -1,6 +1,7 @@
 import { OhneBlocks } from '@ohnejs/next';
 import Link from 'next/link';
 
+import { ContactForm } from '../../components/blocks/ContactForm';
 import { Image } from '../../components/blocks/Image';
 import { PageIntro } from '../../components/blocks/PageIntro';
 import { Portfolio } from '../../components/blocks/Portfolio';
@@ -19,7 +20,7 @@ export default async function NotFound() {
       <main className={page.footerBorder ? 'main main--bordered' : 'main'}>
         <OhneBlocks
           blocks={page.content}
-          components={{ PageIntro, Portfolio, Image, Prose, Posts }}
+          components={{ PageIntro, Portfolio, Image, Prose, Posts, ContactForm }}
         />
       </main>
     );

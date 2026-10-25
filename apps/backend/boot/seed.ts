@@ -90,6 +90,19 @@ hook('schema:synced', async () => {
     ],
   });
 
+  const contact = await query('Pages').createOrThrow({
+    title: 'Contact',
+    slug: 'contact',
+    status: 'published',
+    footerBorder: true,
+    seo: { description: 'Contact us and get in touch.' },
+    content: [
+      { block: 'PageIntro', fields: { title: 'Contact', kicker: 'Get in touch.' } },
+      // The website renders the form, and each message lands in `Messages`.
+      { block: 'ContactForm', fields: {} },
+    ],
+  });
+
   const author = await query('Authors').createOrThrow({ name: 'Khadgar' });
   for (const { image, body, ...post } of posts) {
     const picture = await upload(`blog/${image}.webp`, post.title);
@@ -115,6 +128,7 @@ hook('schema:synced', async () => {
       { label: 'Portfolio', link: { collection: 'Pages', record: home.UUID } },
       { label: 'Blog', link: { collection: 'Pages', record: blog.UUID } },
       { label: 'About', link: { collection: 'Pages', record: aboutPage.UUID } },
+      { label: 'Contact', link: { collection: 'Pages', record: contact.UUID } },
     ],
     copyright: '© 2026 Rayleigh. Built with ohne.',
     social: [
@@ -135,7 +149,7 @@ hook('schema:synced', async () => {
   await query('Site').update({
     name: 'Rayleigh',
     description:
-      'Rayleigh is a minimalistic portfolio template made with ohne, with a gallery, an About page and a blog.',
+      'Rayleigh is a minimalistic portfolio template made with ohne, with a gallery, an About page, a blog and a contact form.',
   });
 
   // The admin account, unless you already created one.

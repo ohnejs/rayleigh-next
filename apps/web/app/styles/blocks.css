@@ -175,3 +175,39 @@
     width: 100%;
   }
 }
+
+/* Contact form */
+
+.contact-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transition: opacity var(--slow) var(--ease);
+}
+
+.contact-form__fields:disabled {
+  opacity: 0.5;
+}
+
+.contact-form__fields .button {
+  align-self: flex-start;
+}
+
+.contact-form__note {
+  width: fit-content;
+  padding: 1rem;
+  border: 1px solid var(--heading);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1rem;
+  outline: none;
+}
+
+.contact-form__note--error {
+  border-color: var(--danger);
+  color: var(--danger);
+}

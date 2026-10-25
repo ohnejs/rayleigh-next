@@ -7,6 +7,7 @@
   --accent: #268baa;
   --border: #e2e4e8;
   --dim: #59797b;
+  --danger: #dc2626;
   --page: #fff;
   --ink: #010203;
   --overlay: rgb(1 2 3 / 0.7);
@@ -42,6 +43,7 @@
   --heading: #fff;
   --copy: rgb(255 255 255 / 0.8);
   --border: rgb(255 255 255 / 0.1);
+  --danger: #f87171;
   --page: #010203;
   --menu-backdrop: rgb(1 2 3 / 0.8);
   --badge: #fff;
