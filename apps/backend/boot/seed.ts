@@ -23,6 +23,8 @@ hook('schema:synced', async () => {
   // Only an empty site gets the demo, so the seed never touches your edits.
   if (await query('Pages').exists()) return;
 
+  const logo = await upload('logo.svg', 'Rayleigh');
+
   const portfolio = [];
   for (const { title, directory, items } of galleries) {
     const gallery = [];
@@ -32,7 +34,7 @@ hook('schema:synced', async () => {
     portfolio.push({ block: 'Portfolio' as const, fields: { title, gallery } });
   }
 
-  await query('Pages').createOrThrow({
+  const home = await query('Pages').createOrThrow({
     title: 'Homepage',
     // `index` is the slug of the home page, shown at `/`.
     slug: 'index',
@@ -54,6 +56,24 @@ hook('schema:synced', async () => {
     ],
   });
 
+  // A singleton always has its one record, so the seed updates it instead of creating it.
+  await query('Settings').update({
+    logo,
+    menu: [{ label: 'Portfolio', link: { collection: 'Pages', record: home.UUID } }],
+    copyright: '© 2026 Rayleigh. Built with ohne.',
+    social: [
+      {
+        icon: 'github',
+        link: { url: 'https://github.com/ohnejs', newTab: true },
+        title: 'ohne on GitHub',
+      },
+      {
+        icon: 'website',
+        link: { url: 'https://ohne.dev/examples/rayleigh', newTab: true },
+        title: 'Rayleigh on ohne.dev',
+      },
+    ],
+  });
   // `Site` comes with the CMS: the site's name, which every page title ends with.
   await query('Site').update({
     name: 'Rayleigh',

@@ -10,8 +10,14 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html.scroll-lock {
+  overflow: hidden;
+}
+
+/* On the root, a changing `color-scheme` delays Chrome's color fades in the body by the body's own fade. */
 body {
   margin: 0;
+  color-scheme: var(--scheme);
   color: var(--copy);
   background: var(--page);
   transition:

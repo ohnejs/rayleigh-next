@@ -1,7 +1,7 @@
-/* Every color, font and size the other stylesheets use. */
+/* Every color, font and size the other stylesheets use. The dark theme swaps the colors only. */
 /* Breakpoints, widest first: 1199px (small laptop), 1023px (tablet), 767px (phone). */
 :root {
-  color-scheme: light;
+  --scheme: light;
   --heading: #010203;
   --copy: #234345;
   --accent: #268baa;
@@ -26,6 +26,26 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --fast: 150ms;
   --slow: 300ms;
+}
+
+/* A visitor who asks for less motion gets every change at once, a theme switch included. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fast: 0ms;
+    --slow: 0ms;
+  }
+}
+
+/* The theme script in the page's `<head>` sets `data-theme` before the first paint. */
+:root[data-theme='dark'] {
+  --scheme: dark;
+  --heading: #fff;
+  --copy: rgb(255 255 255 / 0.8);
+  --border: rgb(255 255 255 / 0.1);
+  --page: #010203;
+  --menu-backdrop: rgb(1 2 3 / 0.8);
+  --badge: #fff;
+  --badge-icon: #010203;
 }
 
 @media (max-width: 1199px) {
