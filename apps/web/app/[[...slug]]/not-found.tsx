@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Image } from '../../components/blocks/Image';
 import { PageIntro } from '../../components/blocks/PageIntro';
 import { Portfolio } from '../../components/blocks/Portfolio';
+import { Posts } from '../../components/blocks/Posts';
 import { Prose } from '../../components/blocks/Prose';
 import { Container } from '../../components/Container';
 import { ohne } from '../../lib/ohne';
@@ -16,7 +17,10 @@ export default async function NotFound() {
   if (page)
     return (
       <main className={page.footerBorder ? 'main main--bordered' : 'main'}>
-        <OhneBlocks blocks={page.content} components={{ PageIntro, Portfolio, Image, Prose }} />
+        <OhneBlocks
+          blocks={page.content}
+          components={{ PageIntro, Portfolio, Image, Prose, Posts }}
+        />
       </main>
     );
   return (

@@ -13,7 +13,7 @@ export default defineCollection({
       description: 'Draws a line above the footer.',
     }),
     // The page's content, as a list of blocks. Each name here is a file in `blocks/`.
-    content: field('blocks', { allow: ['PageIntro', 'Portfolio', 'Image', 'Prose'] }),
+    content: field('blocks', { allow: ['PageIntro', 'Portfolio', 'Image', 'Prose', 'Posts'] }),
   },
   api: {
     // Visitors read published pages only.

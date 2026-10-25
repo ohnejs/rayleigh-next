@@ -39,6 +39,12 @@ export default defineCollection({
       },
       layout: [{ row: ['icon | 10rem', 'link', 'title'] }],
     }),
+    blogPage: field('link', {
+      collections: ['Pages'],
+      nullable: true,
+      label: 'Blog landing page',
+      description: 'The page that lists the posts. Every post links back to it.',
+    }),
   },
   dashboard: {
     icon: 'settings',
@@ -47,6 +53,7 @@ export default defineCollection({
         tabs: [
           { label: 'Header', fields: ['logo', 'menu'] },
           { label: 'Footer', fields: ['copyright', 'social'] },
+          { label: 'Blog', fields: ['blogPage'] },
         ],
       },
     ],

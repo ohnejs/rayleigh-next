@@ -177,6 +177,21 @@
   transition: border-color var(--slow) var(--ease);
 }
 
+.post-header {
+  max-width: var(--content);
+}
+
+.post-header h1 {
+  margin-top: 0.75rem;
+  font-size: 2rem;
+}
+
+.post-header .written-on {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
 /* Footer */
 
 .footer {

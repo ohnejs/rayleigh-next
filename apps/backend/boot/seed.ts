@@ -1,8 +1,9 @@
 import { openAsBlob } from 'node:fs';
-import { hook, query, useEnv } from 'ohnejs';
+import { hook, query, queryUntyped, useEnv, usePrinter } from 'ohnejs';
 import { putUpload, updateUpload } from 'ohnejs/uploads';
+import { randomToken } from 'ohnejs/utils/crypto';
 
-import { about, galleries } from '../seed/content.ts';
+import { about, galleries, posts } from '../seed/content.ts';
 
 /**
  * Uploads one image from `seed/images/` to the media library, as an editor would, and gives it its alt text.
@@ -51,6 +52,18 @@ hook('schema:synced', async () => {
     ],
   });
 
+  const blog = await query('Pages').createOrThrow({
+    title: 'Blog',
+    slug: 'blog',
+    status: 'published',
+    footerBorder: true,
+    content: [
+      { block: 'PageIntro', fields: { title: 'Blog', kicker: 'Inspiration at every turn.' } },
+      // The website fills this block with the posts.
+      { block: 'Posts', fields: {} },
+    ],
+  });
+
   const aboutPage = await query('Pages').createOrThrow({
     title: 'About',
     slug: 'about',
@@ -77,11 +90,30 @@ hook('schema:synced', async () => {
     ],
   });
 
+  const author = await query('Authors').createOrThrow({ name: 'Khadgar' });
+  for (const { image, body, ...post } of posts) {
+    const picture = await upload(`blog/${image}.webp`, post.title);
+    await query('Posts').createOrThrow({
+      ...post,
+      headline: post.title,
+      status: 'published',
+      author: author.UUID,
+      image: picture,
+      // What search engines and share cards show for the post.
+      seo: { description: post.description, image: picture },
+      content: [
+        { block: 'Image', fields: { image: picture } },
+        { block: 'Prose', fields: { body } },
+      ],
+    });
+  }
+
   // A singleton always has its one record, so the seed updates it instead of creating it.
   await query('Settings').update({
     logo,
     menu: [
       { label: 'Portfolio', link: { collection: 'Pages', record: home.UUID } },
+      { label: 'Blog', link: { collection: 'Pages', record: blog.UUID } },
       { label: 'About', link: { collection: 'Pages', record: aboutPage.UUID } },
     ],
     copyright: '© 2026 Rayleigh. Built with ohne.',
@@ -97,10 +129,24 @@ hook('schema:synced', async () => {
         title: 'Rayleigh on ohne.dev',
       },
     ],
+    blogPage: { collection: 'Pages', record: blog.UUID },
   });
   // `Site` comes with the CMS: the site's name, which every page title ends with.
   await query('Site').update({
     name: 'Rayleigh',
-    description: 'Rayleigh is a minimalistic portfolio template made with ohne.',
+    description:
+      'Rayleigh is a minimalistic portfolio template made with ohne, with a gallery, an About page and a blog.',
   });
+
+  // The admin account, unless you already created one.
+  // Its password is random and printed once, so no install starts with a known admin password.
+  if (await queryUntyped('Users').unscoped().exists()) return;
+  const password = randomToken(12);
+  await query('Users').createOrThrow({
+    email: 'admin@example.com',
+    password,
+    firstName: 'Khadgar',
+    roles: ['admin'],
+  });
+  usePrinter().info(`Seeded \`admin@example.com\` with password \`${password}\``);
 });

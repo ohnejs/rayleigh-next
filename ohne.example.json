@@ -1,0 +1,87 @@
+{
+  "slug": "rayleigh",
+  "name": "Rayleigh",
+  "summary": "A minimalistic portfolio with a gallery, an About page and a blog, edited in a CMS.",
+  "description": "A portfolio website on ohne and Next: pages built from blocks, a full-screen gallery, a paginated blog, dark mode, and a live preview beside the editor.",
+  "kind": "website",
+  "source": "https://github.com/ohnejs/rayleigh-next",
+  "variants": [
+    {
+      "stack": "nuxt",
+      "repo": "https://github.com/ohnejs/rayleigh-nuxt"
+    },
+    {
+      "stack": "next",
+      "repo": "https://github.com/ohnejs/rayleigh-next"
+    }
+  ],
+  "demo": {
+    "mode": "copy",
+    "accounts": [
+      {
+        "label": "Admin",
+        "email": "admin@example.com",
+        "password": "ohne-demo"
+      }
+    ]
+  },
+  "ai": false,
+  "features": [
+    "cms/setup",
+    "cms/website",
+    "cms/frameworks",
+    "database/blocks",
+    "database/collections",
+    "database/rich-text",
+    "dashboard/field-layouts",
+    "uploads/uploads",
+    "project/boot",
+    "project/monorepo"
+  ],
+  "languages": ["en"],
+  "screenshots": {
+    "site": [
+      {
+        "light": "screenshots/home-light.png",
+        "dark": "screenshots/home-dark.png",
+        "alt": "The home page with the interior design gallery"
+      },
+      {
+        "light": "screenshots/post-light.png",
+        "dark": "screenshots/post-dark.png",
+        "alt": "A blog post with its image and text"
+      }
+    ],
+    "dashboard": [
+      {
+        "light": "screenshots/editor-light.png",
+        "dark": "screenshots/editor-dark.png",
+        "alt": "The dashboard's live editor beside the home page"
+      }
+    ]
+  },
+  "files": {
+    "site": [
+      "apps/web/app/[[...slug]]/page.tsx",
+      "apps/web/app/[[...slug]]/layout.tsx",
+      "apps/web/components/blocks/Portfolio.tsx",
+      "apps/web/components/blocks/Posts.tsx",
+      "apps/web/components/Slider.tsx",
+      "apps/web/lib/theme.ts"
+    ],
+    "dashboard": [
+      "apps/backend/ohne.config.ts",
+      "apps/backend/collections/Pages.ts",
+      "apps/backend/collections/Posts.ts",
+      "apps/backend/collections/Authors.ts",
+      "apps/backend/collections/Settings.ts",
+      "apps/backend/blocks/Portfolio.ts",
+      "apps/backend/blocks/Posts.ts",
+      "apps/backend/boot/seed.ts"
+    ]
+  },
+  "smoke": ["/cms/records/Settings", "/cms/routes/resolve?path=/"],
+  "stage": "alpha",
+  "ohne": "0.4.0",
+  "releasedAt": null
+}

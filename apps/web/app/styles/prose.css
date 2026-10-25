@@ -57,6 +57,16 @@
   color: var(--accent);
 }
 
+.main--post .prose > h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.main--post .prose > h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 @media (max-width: 767px) {
   .prose > h2 {
     font-size: 1.875rem;

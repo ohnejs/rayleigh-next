@@ -118,3 +118,60 @@
   width: 100%;
   border-radius: var(--radius);
 }
+
+/* Posts */
+
+.posts > * + * {
+  margin-top: var(--section);
+}
+
+.posts__item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* The list crops each post's image to a 1200 by 630 share card, as the design does. */
+.posts__image {
+  flex-shrink: 0;
+  width: 23.75rem;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.posts__body {
+  flex: 1;
+}
+
+.posts__body .written-on {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.posts__description {
+  margin-top: 1rem;
+}
+
+.posts__body .button {
+  margin-top: 1.5rem;
+}
+
+.posts__pager {
+  display: flex;
+  gap: 2rem;
+}
+
+.posts__next {
+  margin-left: auto;
+}
+
+@media (max-width: 1023px) {
+  .posts__item {
+    flex-direction: column;
+  }
+
+  .posts__image {
+    width: 100%;
+  }
+}
