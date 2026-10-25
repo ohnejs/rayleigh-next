@@ -1,0 +1,122 @@
+/* Slider */
+
+.slider {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #fff;
+  background: var(--backdrop);
+  opacity: 1;
+  transition: opacity var(--slow) var(--ease);
+}
+
+@starting-style {
+  .slider[open] {
+    opacity: 0;
+  }
+}
+
+.slider::backdrop {
+  background: transparent;
+}
+
+.slider__track {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.slider__slide {
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-width: 0;
+  padding: 2rem 5rem;
+  scroll-snap-align: center;
+}
+
+/* The slide's padding and the caption take 7rem, so the whole image always fits on screen. */
+.slider__image {
+  width: auto;
+  max-height: calc(100dvh - 7rem);
+  border-radius: var(--radius);
+}
+
+.slider__caption {
+  text-align: center;
+}
+
+.slider__close,
+.slider__arrow {
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+}
+
+.slider__close svg,
+.slider__arrow svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: auto;
+}
+
+.slider__close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+/* `--image-width` is the shown image's width, so the arrows sit beside it. */
+.slider__arrow {
+  top: 50%;
+  translate: 0 -50%;
+  transition:
+    opacity var(--fast) var(--ease),
+    left var(--fast) var(--ease),
+    right var(--fast) var(--ease);
+}
+
+.slider__arrow--prev {
+  right: calc(50% + var(--image-width, 0px) / 2 + 1.5rem);
+}
+
+.slider__arrow--next {
+  left: calc(50% + var(--image-width, 0px) / 2 + 1.5rem);
+}
+
+.slider__arrow:disabled {
+  opacity: 0;
+  cursor: default;
+}
+
+@media (max-width: 767px) {
+  .slider__slide {
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .slider__image {
+    max-height: calc(100dvh - 9rem);
+  }
+
+  .slider__close {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .slider__arrow {
+    display: none;
+  }
+}

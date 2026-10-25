@@ -2,6 +2,7 @@ import { OhneBlocks } from '@ohnejs/next';
 import Link from 'next/link';
 
 import { Hero } from '../../components/blocks/Hero';
+import { Portfolio } from '../../components/blocks/Portfolio';
 import { Prose } from '../../components/blocks/Prose';
 import { Container } from '../../components/Container';
 import { ohne } from '../../lib/ohne';
@@ -14,7 +15,7 @@ export default async function NotFound() {
   if (page)
     return (
       <main className="main">
-        <OhneBlocks blocks={page.content} components={{ Hero, Prose }} />
+        <OhneBlocks blocks={page.content} components={{ Hero, Prose, Portfolio }} />
       </main>
     );
   return (

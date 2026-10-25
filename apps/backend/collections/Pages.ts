@@ -8,7 +8,7 @@ export default defineCollection({
     // See https://ohne.dev/docs/cms/setup#pages
     ...pageFields(),
     // The page's content, as a list of blocks. Each name here is a file in `blocks/`.
-    content: field('blocks', { allow: ['Hero', 'Prose'] }),
+    content: field('blocks', { allow: ['Hero', 'Prose', 'Portfolio'] }),
   },
   api: {
     // Visitors read published pages only.

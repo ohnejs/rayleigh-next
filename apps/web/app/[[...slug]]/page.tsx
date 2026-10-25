@@ -1,6 +1,7 @@
 import { OhneBlocks } from '@ohnejs/next';
 
 import { Hero } from '../../components/blocks/Hero';
+import { Portfolio } from '../../components/blocks/Portfolio';
 import { Prose } from '../../components/blocks/Prose';
 import { ohne } from '../../lib/ohne';
 
@@ -15,7 +16,7 @@ export default async function Page() {
   return (
     <main className="main" lang={page.locale}>
       {/* Name a component for every block. A block the CMS adds fails `pnpm typecheck` until it has one. */}
-      <OhneBlocks blocks={page.record.content} components={{ Hero, Prose }} />
+      <OhneBlocks blocks={page.record.content} components={{ Hero, Prose, Portfolio }} />
     </main>
   );
 }
