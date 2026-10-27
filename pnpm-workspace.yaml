@@ -2,8 +2,8 @@ packages:
   - apps/*
 
 catalog:
-  ohnejs: 0.5.1
-  '@ohnejs/cms': 0.4.2
+  ohnejs: 0.6.0
+  '@ohnejs/cms': 0.4.3
   '@ohnejs/client': 0.3.0
   '@ohnejs/next': 0.1.0
   next: 16.4.2

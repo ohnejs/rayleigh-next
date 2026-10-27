@@ -10,8 +10,8 @@ catalogs:
       specifier: 0.3.0
       version: 0.3.0
     '@ohnejs/cms':
-      specifier: 0.4.2
-      version: 0.4.2
+      specifier: 0.4.3
+      version: 0.4.3
     '@ohnejs/next':
       specifier: 0.1.0
       version: 0.1.0
@@ -25,8 +25,8 @@ catalogs:
       specifier: 16.4.2
       version: 16.4.2
     ohnejs:
-      specifier: 0.5.1
-      version: 0.5.1
+      specifier: 0.6.0
+      version: 0.6.0
     react:
       specifier: 19.3.1
       version: 19.3.1
@@ -52,10 +52,10 @@ importers:
     dependencies:
       '@ohnejs/cms':
         specifier: 'catalog:'
-        version: 0.4.2(ohnejs@0.5.1)
+        version: 0.4.3(ohnejs@0.6.0)
       ohnejs:
         specifier: 'catalog:'
-        version: 0.5.1
+        version: 0.6.0
     devDependencies:
       '@types/node':
         specifier: 26.0.0
@@ -318,11 +318,11 @@ packages:
     resolution: {integrity: sha512-f9xKnDVbw/9OvH7e0Iizfy1zpnNDiBxypSpRHJ6/XENi7yhVFDYe93FsgS54u4kJ7KGV7eH/kZ8LqPo5DQDcSQ==}
     engines: {node: '>=20.0.0'}
 
-  '@ohnejs/cms@0.4.2':
-    resolution: {integrity: sha512-f8fPnwxw/IpGZDqMhRMoBNHUk5eMTLVmf9nkgqwyRUOvuD+/5nrZoJo6JlPSMzmnF3eYvCIcynFVqLrrqgkpPA==}
+  '@ohnejs/cms@0.4.3':
+    resolution: {integrity: sha512-jLumxDTXukE6MnU28q3LenbIlucvDMKEYnWFpOQ32fN68qlyRbEkVNIRytkRcud0FmwCIUbXNCDlaxOAmroMeA==}
     engines: {node: '>=26.0.0'}
     peerDependencies:
-      ohnejs: '>=0.5.0 <0.6.0-0'
+      ohnejs: '>=0.5.0 <0.7.0-0'
 
   '@ohnejs/next@0.1.0':
     resolution: {integrity: sha512-HqXfJJOEwHyhwrs2W5syEdn36DST5XYGASrKhx6Ltvu0oA7DumaA9Jhx2foUDz62uWZp8LHucbjKtv7iu3D/Sg==}
@@ -753,8 +753,8 @@ packages:
       sass:
         optional: true
 
-  ohnejs@0.5.1:
-    resolution: {integrity: sha512-e36DjG8jnphUHQ0lJqwu7n+8FcYzcNSk7LXxSkuvEBVE9OgEHrdFycyblENLZhryhyW+eqLdXM6QBirBOoEqiQ==}
+  ohnejs@0.6.0:
+    resolution: {integrity: sha512-DoJ8TW8gIk/nhOUfpQNg2MQnWV7qGU4n3t7VcD2raeZoHpab+4pkvMdsxyeyvY5XLr95+BCE/TskU1oRBbB6Aw==}
     engines: {node: '>=26.0.0'}
     hasBin: true
 
@@ -994,9 +994,9 @@ snapshots:
 
   '@ohnejs/client@0.3.0': {}
 
-  '@ohnejs/cms@0.4.2(ohnejs@0.5.1)':
+  '@ohnejs/cms@0.4.3(ohnejs@0.6.0)':
     dependencies:
-      ohnejs: 0.5.1
+      ohnejs: 0.6.0
 
   '@ohnejs/next@0.1.0(@ohnejs/client@0.3.0)(@types/react@19.3.0)(next@16.4.2(@types/node@26.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)':
     dependencies:
@@ -1230,7 +1230,7 @@ snapshots:
       - '@types/node'
       - babel-plugin-macros
 
-  ohnejs@0.5.1: {}
+  ohnejs@0.6.0: {}
 
   oxfmt@0.74.0:
     dependencies:
