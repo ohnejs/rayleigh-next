@@ -92,6 +92,7 @@
       "apps/backend/boot/seed.ts",
       "apps/backend/package.json",
       "apps/backend/tsconfig.json",
+      "apps/backend/dashboard/tsconfig.json",
       "apps/backend/.gitignore"
     ]
   },
